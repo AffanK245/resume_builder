@@ -21,7 +21,7 @@ model = genai.GenerativeModel("models/gemini-2.5-flash")
 # Streamlit UI
 # ---------------------------
 st.set_page_config(page_title="AI Resume Studio", layout="wide")
-st.title("🚀 AI Resume Studio (Gemini Powered)")
+st.title("AI Resume Studio (Gemini Powered)")
 st.markdown("Upgrade your resume. Beat ATS. Stand out from the crowd.")
 
 uploaded_file = st.file_uploader("Upload Your Resume (PDF)", type=["pdf"])
@@ -75,10 +75,10 @@ if uploaded_file and job_role:
 
     resume_text = read_pdf(uploaded_file)
 
-    st.subheader("📄 Original Resume")
+    st.subheader(" Original Resume")
     st.text_area("Original Content", resume_text, height=250)
 
-    if st.button("🔥 Optimize Resume"):
+    if st.button(" Optimize Resume"):
 
         prompt = f"""
         
@@ -129,7 +129,7 @@ CERTIFICATIONS
             response = model.generate_content(prompt)
             optimized_text = response.text
 
-        st.subheader("✅ Optimized Resume")
+        st.subheader("Optimized Resume")
         st.text_area("Final Resume", optimized_text, height=400)
 
         # ---------------------------
@@ -149,7 +149,7 @@ Resume:
 
         analysis = model.generate_content(analysis_prompt)
 
-        st.subheader("📊 Resume Analysis & ATS Report")
+        st.subheader(" Resume Analysis & ATS Report")
         st.write(analysis.text)
 
         # ---------------------------
@@ -164,4 +164,4 @@ Resume:
             mime="application/pdf"
         )
 
-        st.success("🎯 Resume Optimization Complete!")
+        st.success("Resume Optimization Complete!")
